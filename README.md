@@ -25,6 +25,7 @@ sudo sysctl -n -w fs.inotify.max_user_watches=1048576
 repo init -u https://github.com/py4mac/yocto-manifest.git -b main -m manifest.xml
 repo sync
 cd src
+source poky/oe-init-build-env
 ```
 
 ## Initial build
