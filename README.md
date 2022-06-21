@@ -4,23 +4,20 @@
 
 # Pre-requisites
 
-## Build docker image
+* Build docker image
 A based docker image must be built previously. See https://github.com/py4mac/dotfiles
 
-## Run docker env
+* Run docker env
+
 ```sh
 docker-compose run virtual-env
 ```
 
-## Warnings
-In case of issue, increase watch file using command
-```sh
-sudo sysctl -n -w fs.inotify.max_user_watches=1048576
-```
+> **_NOTE:_**  In case of issue, increase watch file using command ```sudo sysctl -n -w fs.inotify.max_user_watches=1048576```
 
 # Steps
 
-# Collect dependencies repo
+* Collect dependencies repo
 ```sh
 repo init -u https://github.com/py4mac/yocto-manifest.git -b main -m manifest.xml
 repo sync
@@ -28,7 +25,7 @@ cd src
 source poky/oe-init-build-env
 ```
 
-## Initial build
+* Build image
 ```sh
 bitbake-layers add-layer ../meta-noclue
 bitbake core-image-minimal
@@ -36,7 +33,7 @@ bitbake noclue
 bitbake noclue-image
 ```
 
-## Test new image
+* Test image
 ```sh
 runqemu nographic slirp
 ```
@@ -48,7 +45,7 @@ The new binary file imported is then
 noclue
 ```
 
-## Exit
+* Exit
 ```sh
 halt
 ```
