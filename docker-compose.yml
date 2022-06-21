@@ -1,0 +1,10 @@
+services:
+  virtual-env:
+    image: virtual-env
+    volumes:
+      - ./workspace:/home/dev/workspace
+    secrets:
+      - user_ssh_key
+secrets:
+  user_ssh_key:
+    file: ~/.ssh/id_rsa
