@@ -25,11 +25,13 @@ cd src
 source poky/oe-init-build-env
 ```
 
-* Build image
+* Add noclue layer
 ```sh
 bitbake-layers add-layer ../meta-noclue
-bitbake core-image-minimal
-bitbake noclue
+```
+
+* Build image
+```sh
 bitbake noclue-image
 ```
 
@@ -53,15 +55,23 @@ halt
 # Tips
 
 ## Create a new layer before building (see initial build step)
+* Create noclue layer
 ```sh
 bitbake-layers create-layer ../meta-noclue
+```
+
+* Add noclue layer
+```sh
 bitbake-layers add-layer ../meta-noclue
+```
+
+* Build core image
+```sh
 bitbake core-image-minimal
 ```
 
 ## Add C/C++ image
-Create folder at same level than poky, with C/C++ code + CMakeLists
-then
+At the same level than poky, create **noclue** folder with C/C++ code + CMakeLists and type
 `devtool add --no-same-dir ../noclue`
 
 Copy `*.bb` files and `*.bbappend` files in `meta-noclue` folder (`meta-noclue/recipes-noclue/c`)
