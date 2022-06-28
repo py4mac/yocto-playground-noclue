@@ -1,3 +1,5 @@
 # folders
 .repo/
 src/
+builds/
+layers/

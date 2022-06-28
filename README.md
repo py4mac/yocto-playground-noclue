@@ -21,13 +21,12 @@ docker-compose run virtual-env
 ```sh
 repo init -u https://github.com/py4mac/yocto-manifest.git -b main -m manifest.xml
 repo sync
-cd src
-source poky/oe-init-build-env
+source layers/poky/oe-init-build-env ./builds/build-x86
 ```
 
 * Add noclue layer
 ```sh
-bitbake-layers add-layer ../meta-noclue
+bitbake-layers add-layer ../../layers/py4mac/meta-noclue
 ```
 
 * Build image
@@ -40,7 +39,7 @@ bitbake noclue-image
 runqemu nographic slirp
 ```
 
-login is `root`
+login is `root` and password is `root`
 
 The new binary file imported is then
 ```sh
@@ -57,12 +56,12 @@ halt
 ## Create a new layer before building (see initial build step)
 * Create noclue layer
 ```sh
-bitbake-layers create-layer ../meta-noclue
+bitbake-layers create-layer ../../layers/meta-noclue
 ```
 
 * Add noclue layer
 ```sh
-bitbake-layers add-layer ../meta-noclue
+bitbake-layers add-layer ../../layers/meta-noclue
 ```
 
 * Build core image
@@ -72,7 +71,7 @@ bitbake core-image-minimal
 
 ## Add C/C++ image
 At the same level than poky, create **noclue** folder with C/C++ code + CMakeLists and type
-`devtool add --no-same-dir ../noclue`
+`devtool add --no-same-dir ../../noclue`
 
 Copy `*.bb` files and `*.bbappend` files in `meta-noclue` folder (`meta-noclue/recipes-noclue/c`)
 
